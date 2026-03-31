@@ -15,8 +15,8 @@ Clone this repo to any temporary location. Delete the four folders (`conversatio
 
 ## Verify
 
-After install or update, ask the user if they want to run `/recall` to test that everything works.
+After install or update, ask the user to restart Claude Code, then run `/recall` to test that everything works.
 
 ## Uninstall
 
-Delete `conversation-compiler`, `readchat`, `recall`, `searchchat` from your `.claude/skills/`.
+Delete `conversation-compiler`, `readchat`, `recall`, `searchchat` from your `.claude/skills/`. Ask the user to restart Claude Code.

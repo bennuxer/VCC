@@ -41,6 +41,8 @@ VCC 是一个编译器，把你的对话日志 (Claude Code 的 JSONL) 编译成
     `conversation-compiler`, `readchat`, `recall`, `searchchat`
     from my `.claude/skills`
 
+安装、更新、卸载后都要重启 Claude Code。
+
 # 基本用法
 
 当 compact 触发的时候 (不管是自动还是手动)，你可以马上 `/recall`。

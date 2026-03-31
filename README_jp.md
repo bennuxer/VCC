@@ -41,6 +41,8 @@ VCC をインストールすると大体こうなります:
     `conversation-compiler`, `readchat`, `recall`, `searchchat`
     from my `.claude/skills`
 
+インストール、アップデート、アンインストール後は Claude Code を再起動してください。
+
 # 基本的な使い方
 
 Compact がトリガーされたら (自動でも手動でも)、すぐに `/recall` できます。

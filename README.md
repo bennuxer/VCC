@@ -41,6 +41,8 @@ To uninstall, copy this to your Claude Code:
     `conversation-compiler`, `readchat`, `recall`, `searchchat`
     from my `.claude/skills`
 
+Restart Claude Code after install, update, or uninstall.
+
 # Basic Usage
 
 When a compact is triggered (whether automaticaly or manually), you can immediately `/recall`.
