@@ -268,7 +268,7 @@ VCC 不存任何东西。视图是动态的。它们从原始 JSONL 实时计算
 它们非常不一样。Pretty-print 只是重新排版文本。VCC 是一个真正的编译器，有 lex, parse, IR, lower, emit。举几个例子:
 
 * Lexer 在 parse 之前就把 `queue-operation`, `progress`, `api_error` 这种垃圾记录丢掉了
-* Parser 把 tool call 参数从转义的 JSON blob 变成可读的 YAML (多行用 block scalar)
+* Parser 把 tool call 参数从转义的 JSON blob 变成可读的缩进文本
 * Parser 还会把 Read tool 返回结果里的 `数字→` 前缀去掉来还原原始源码，也会把 base64 图片解码成文件
 * 到 IR 阶段，被 compaction 分裂的 assistant 消息 (同一个 ID 但是多条 JSONL 记录) 会被重组成一个 section
 * Lowering 会去掉 harness 注入的 XML (`<system-reminder>`, `<ide_opened_file>` 之类的)，过滤内部工具 (`TodoWrite`, `ToolSearch`)，清理 ANSI 转义码，隐藏纯 markup 的用户 turn

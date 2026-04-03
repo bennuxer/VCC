@@ -268,7 +268,7 @@ Lets say you jump from a adaptive view to the full view with some block line num
 They are very different. Pretty-print just reformats text. VCC is a real compiler with lex, parse, IR, lower, emit. Some examples of what it does:
 
 * The lexer drops junk records like `queue-operation`, `progress`, `api_error` before parsing even starts
-* The parser turns tool call parameters from escaped JSON blobs into readable YAML with block scalars
+* The parser turns tool call parameters from escaped JSON blobs into readable block-indented text
 * The parser also strips `digits→` prefixes from Read tool results to recover original source, and decodes base64 images to files
 * At the IR stage, split assistant messages (same ID but multiple JSONL records because of compaction) get reassembled into single sections
 * Lowering strips harness XML (`<system-reminder>`, `<ide_opened_file>`, etc), filters internal tools (`TodoWrite`, `ToolSearch`), cleans ANSI escape codes, and hides pure-markup user turns

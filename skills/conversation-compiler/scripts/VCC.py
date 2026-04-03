@@ -22,31 +22,35 @@ import json
 import os
 import re
 import sys
-import yaml
-
 import glob as globmod
 
-# ── yaml ──
+# ── dict emitter ──
 
-def _str_representer(d, data):
-    if "\n" in data:
-        # PyYAML refuses | style for: trailing whitespace, tabs, control chars.
-        # Tabs → spaces; strip trailing whitespace; control chars → drop.
-        import re
-        clean = data.expandtabs(4)
-        clean = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", "", clean)
-        clean = "\n".join(line.rstrip() for line in clean.split("\n"))
-        return d.represent_scalar("tag:yaml.org,2002:str", clean, style="|")
-    return d.represent_scalar("tag:yaml.org,2002:str", data)
-
-class _dumper(yaml.Dumper):
-    pass
-
-_dumper.add_representer(str, _str_representer)
-
-def _yaml_dump(data):
-    return yaml.dump(data, Dumper=_dumper, default_flow_style=False,
-                     allow_unicode=True, width=10000, sort_keys=False).rstrip("\n")
+def _emit_dict(data, indent=0):
+    parts = []
+    prefix = " " * indent
+    for k, v in data.items():
+        if isinstance(v, dict):
+            parts.append(prefix + k + ":")
+            parts.append(_emit_dict(v, indent + 2))
+        elif isinstance(v, list):
+            parts.append(prefix + k + ":")
+            for item in v:
+                if isinstance(item, dict):
+                    parts.append(prefix + "  -")
+                    parts.append(_emit_dict(item, indent + 4))
+                else:
+                    parts.append(prefix + "  - " + str(item))
+        else:
+            s = str(v)
+            if "\n" in s:
+                parts.append(prefix + k + ": |")
+                p = " " * (indent + 2)
+                for line in s.split("\n"):
+                    parts.append((p + line) if line else "")
+            else:
+                parts.append(prefix + k + ": " + s)
+    return "\n".join(parts)
 
 # ── tokenizer ──
 
@@ -387,7 +391,7 @@ def parse(chain, outdir, data_prefix, data_ctr):
                 ir.append(_node("meta", [hl], _sec=sec, _blk=blk,
                                  _tool_summary=summary))
                 if inp:
-                    ir.append(_node("tool_call", _yaml_dump(inp).split("\n"),
+                    ir.append(_node("tool_call", _emit_dict(inp).split("\n"),
                                      searchable=True, _sec=sec, _blk=blk))
                 ir.append(_node("meta", ["<<<tool_call"], _sec=sec, _blk=blk))
                 blk += 1; has_any = True
